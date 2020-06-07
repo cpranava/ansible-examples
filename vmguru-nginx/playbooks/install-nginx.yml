@@ -4,8 +4,6 @@
   gather_facts: yes
   become: true
   become_method: sudo
-  vars_files:
-    - /etc/ansible/vars/main.yml
   
   tasks:
   - name: Update and upgrade apt packages
@@ -19,18 +17,18 @@
       name: nginx
       state: present
 
-  - name: Deploy website content
-    copy:
-      src: sample_website/
-      dest: /var/www/html
-      mode: 0755
-      owner: root
+  #- name: Deploy website content
+  #  copy:
+  #    src: sample_website/
+  #    dest: /var/www/html
+  #    mode: 0755
+  #    owner: root
 
-  - name: Create index.html from template
-    template:
-      src: index.html.j2
-      dest: /var/www/html/index.nginx-debian.html
-      force: yes
+  #- name: Create index.html from template
+  #  template:
+  #    src: index.html.j2
+  #    dest: /var/www/html/index.nginx-debian.html
+  #    force: yes
   
   - name: Ensure Nginx service is started and enabled
     service:
@@ -38,5 +36,5 @@
       state: restarted
       enabled: yes
 
-  roles:
-    - { role: geerlingguy.firewall }
+  #roles:
+  #  - { role: geerlingguy.firewall }
