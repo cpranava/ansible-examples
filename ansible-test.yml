@@ -1,0 +1,8 @@
+- name: Install NGINX on Debian/Ubuntu
+  hosts: all
+  connection: ssh
+  gather_facts: yes
+  become: true
+  become_method: sudo
+  roles:
+    - vmguru-nginx
