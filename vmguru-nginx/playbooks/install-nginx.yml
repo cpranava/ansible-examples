@@ -21,14 +21,14 @@
 
   - name: Deploy website content
     copy:
-      src: /etc/ansible/files/sample_website/
+      src: sample_website/
       dest: /var/www/html
       mode: 0755
       owner: root
 
   - name: Create index.html from template
     template:
-      src: /etc/ansible/templates/index.html.j2
+      src: index.html.j2
       dest: /var/www/html/index.nginx-debian.html
       force: yes
   
